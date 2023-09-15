@@ -1,8 +1,10 @@
-export default function SearchBar({onSearch}) {
+const SearchBar = ({onSearch}) => {
    return (
       <div>
-          <input type='search' />
+         <input type='search' />
          <button onClick={onSearch}>Agregar</button> 
       </div>
    );
 }
+
+export default SearchBar
