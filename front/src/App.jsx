@@ -1,14 +1,38 @@
+import { useState } from 'react';
+import axios from 'axios';
 import './App.css'
 import Cards from './components/Cards/Cards';
-import characters from './data.js';
 import Nav from './components/Nav/Nav';
 
-
 function App() {
+
+  const [characters, setCharacters] = useState([]);
+
+  const onSearch =(id) =>{
+    axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
+      if (data.name) {
+         setCharacters((oldChars) => [...oldChars, data]);
+      } else {
+         window.alert('¡No hay personajes con este ID!');
+      }
+    });
+  }
+
+  console.log(characters);
+  
+  const onClose = (id)=>
+  {
+    const filterCharacters = characters.filter((character) => character.id !== parseInt(id));
+    console.log('Called Close event')
+    console.log(id)
+    console.log(filterCharacters)
+    setCharacters(filterCharacters);
+  }
+  
   return (
     <div className='App'>
-         <Nav onSearch={(characterID) => window.alert(characterID)} />
-         <Cards characters={characters} />
+         <Nav onSearch={onSearch} />
+         <Cards characters={characters} onClose={onClose} />
       
     </div>
   )
