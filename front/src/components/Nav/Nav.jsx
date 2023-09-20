@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../searchbar/SearchBar";
-
+import { useLocation } from "react-router-dom";
 
 const Nav = ({onSearch}) =>
 {
@@ -13,7 +13,15 @@ const Nav = ({onSearch}) =>
        
         onSearch(num);
       };
-   
+    
+    let path = useLocation();
+    
+    //console.log(path)
+    
+    if(path.pathname === '/')
+    {
+        return null;
+    }
 
     return(
             <div className="nav" >

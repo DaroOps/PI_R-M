@@ -1,7 +1,7 @@
 import './App.css'
 
-import { useState } from 'react';
-import { Routes, Route } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { Routes, Route, useLocation ,useNavigate} from "react-router-dom";
 
 import axios from 'axios';
 import Cards from './components/cards/Cards';
@@ -9,11 +9,30 @@ import Nav from './components/nav/Nav';
 import About from './components/about/About';
 import Detail from './components/detail/Detail';
 import Error from './components/error/Error';
+import Form from './components/form/Form';
 
 function App() {
 
+
   const [characters, setCharacters] = useState([]);
 
+  //simulacion Base de Datos
+  const navigate = useNavigate();
+  const [access, setAccess] = useState(false);
+  const EMAIL = 'eje@cosa.com';
+  const PASSWORD = '12345678a';
+
+  function login(userData) {
+    if (userData.password === PASSWORD && userData.email === EMAIL) {
+      setAccess(true);
+      navigate('/home');
+    }
+  }
+
+  useEffect(() => {
+    !access && navigate('/');
+  }, [access]);
+  //
   const onSearch = (id) => {
 
     if (Number(id) > 826 || Number(id) < 1) {
@@ -55,7 +74,9 @@ function App() {
           <Cards characters={characters} onClose={onClose} />} />
         <Route path='/about' element={<About />} />
         <Route path='/detail/:id' element={<Detail />} />
-        <Route path='*' element={<Error />} />
+        <Route path='/' element={<Form onLogin={login}/>}  />
+        <Route path='/*' element={<Error />} />
+
       </Routes>
     </div>
   );
