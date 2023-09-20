@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import SearchBar from "../SearchBar/SearchBar";
+import SearchBar from "../searchbar/SearchBar";
 
 
 const Nav = ({onSearch}) =>
@@ -18,12 +18,15 @@ const Nav = ({onSearch}) =>
     return(
             <div className="nav" >
                 
-                <button>
-                    <Link to='/' >Home</Link>
-                </button>
-                <button>
-                    <Link to={'/about'}>About</Link>
-                </button>
+            
+                <Link to='/home' >
+                    <button>Home</button>
+                </Link>
+               
+                <Link to={'/about'}>
+                    <button>About</button>
+                </Link>
+                
                 <SearchBar onSearch={onSearch}/> 
                 <button onClick={generateRandomId}>Random</button>
 

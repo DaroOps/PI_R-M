@@ -4,20 +4,19 @@ import { useState } from 'react';
 import { Routes, Route } from "react-router-dom";
 
 import axios from 'axios';
-import Cards from './components/Cards/Cards';
-import Nav from './components/Nav/Nav';
-import About from './components/About/About';
-import Detail from './components/Detail/Detail';
-import Error from './components/Error/Error';
+import Cards from './components/cards/Cards';
+import Nav from './components/nav/Nav';
+import About from './components/about/About';
+import Detail from './components/detail/Detail';
+import Error from './components/error/Error';
 
 function App() {
 
   const [characters, setCharacters] = useState([]);
 
   const onSearch = (id) => {
-    
-    if(Number(id) > 826 || Number(id) < 1)
-    {
+
+    if (Number(id) > 826 || Number(id) < 1) {
       return window.alert('¡No hay personajes con este ID!');
     }
 
@@ -28,13 +27,13 @@ function App() {
         if (!characters.find(char => char.id === parseInt(id))) {
           //window.alert('¡El ID solicitado ya se encuentra en la lista!');
           setCharacters((oldChars) => [...oldChars, data]);
-        } 
-          
-  
+        }
+
+
       } else {
         window.alert('¡No hay personajes con este ID!');
       }
-    
+
     });
   }
 
@@ -52,12 +51,11 @@ function App() {
     <div className='App'>
       <Nav onSearch={onSearch} />
       <Routes>
-        <Route path="/" element={
-        <Cards characters={characters} onClose={onClose} />
-        }/>
+        <Route path="/home" element={
+          <Cards characters={characters} onClose={onClose} />} />
         <Route path='/about' element={<About />} />
-        <Route path='/detail/:id' element={<Detail />}/>
-        <Route path='*' element={<Error />}/>
+        <Route path='/detail/:id' element={<Detail />} />
+        <Route path='*' element={<Error />} />
       </Routes>
     </div>
   );

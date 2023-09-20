@@ -1,4 +1,4 @@
-import Card from '../Card/Card';
+import Card from '../card/Card';
 import { Link } from 'react-router-dom';
 
 const Cards = ({characters, onClose}) => {
@@ -6,7 +6,7 @@ const Cards = ({characters, onClose}) => {
    return (
    <div>
       {
-         characters.map(({id,name, status, species, gender, origin , image}) => {
+         characters.map(({id, name, image}) => {
                return(
                   <Card 
                      key={id}
@@ -14,12 +14,8 @@ const Cards = ({characters, onClose}) => {
                      name={<Link to={`/detail/${id}`} >
                            <h3 className="card-name">{name}</h3>
                            </Link>}
-                     status={status}
-                     species={species}
-                     gender={gender}
-                     origin={origin.name}
+               
                      image={image}
-                     onClose={onClose}
                   /> 
                )
             })
