@@ -1,4 +1,5 @@
 import Card from '../Card/Card';
+import { Link } from 'react-router-dom';
 
 const Cards = ({characters, onClose}) => {
    
@@ -10,7 +11,9 @@ const Cards = ({characters, onClose}) => {
                   <Card 
                      key={id}
                      id={id}
-                     name={name}
+                     name={<Link to={`/detail/${id}`} >
+                           <h3 className="card-name">{name}</h3>
+                           </Link>}
                      status={status}
                      species={species}
                      gender={gender}

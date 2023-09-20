@@ -1,8 +1,14 @@
-import { useState } from 'react';
-import axios from 'axios';
 import './App.css'
+
+import { useState } from 'react';
+import { Routes, Route } from "react-router-dom";
+
+import axios from 'axios';
 import Cards from './components/Cards/Cards';
 import Nav from './components/Nav/Nav';
+import About from './components/About/About';
+import Detail from './components/Detail/Detail';
+import Error from './components/Error/Error';
 
 function App() {
 
@@ -45,10 +51,16 @@ function App() {
   return (
     <div className='App'>
       <Nav onSearch={onSearch} />
-      <Cards characters={characters} onClose={onClose} />
-
+      <Routes>
+        <Route path="/" element={
+        <Cards characters={characters} onClose={onClose} />
+        }/>
+        <Route path='/about' element={<About />} />
+        <Route path='/detail/:id' element={<Detail />}/>
+        <Route path='*' element={<Error />}/>
+      </Routes>
     </div>
-  )
+  );
 }
 
 export default App
