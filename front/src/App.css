@@ -11,9 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -22,6 +24,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -34,8 +37,76 @@
 }
 
 .card {
-  padding: 2em;
+  width: 360px;
+  height: 400px; 
+  border-bottom: 71;
+  padding: 5px;
 }
+
+.cardDotContainer
+{
+  margin-top: 0;
+  position: relative;
+  border: 2px solid #000;
+  
+  top: 103px; /* Ajusta la posición vertical según tus necesidades */
+  left: -15px; /* Ajusta la posición horizontal según tus necesidades */
+  width: 60px; /* Diámetro del círculo */
+  height: 60px; /* Diámetro del círculo */
+  background-color: rgb(255, 255, 255); /* Color del círculo (puedes cambiarlo) */
+  border-radius: 50%; /* Hacerlo circular */
+  z-index: 1; /* Asegurarse de que esté por encima de la imagen */
+  
+}
+
+
+.cardName
+{
+  margin: 0;
+  height: 50px;
+  border-top: 30px;
+  white-space: nowrap; /* Evita el salto de línea en el texto */
+  overflow: hidden; /* Evita que el texto se desborde */
+  text-overflow: ellipsis;
+  z-index: 3; 
+  
+}
+
+
+.cardExternalBorder {
+  width: 100%;
+  height: 100%;
+  margin-top:0;
+  
+  background-color: #fff;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #000;
+}
+
+.cardInternalBorder {
+  margin-top: 0px;
+  margin-right: 10px;
+  margin-left: 10px;
+  
+  height: 100%;
+  border-radius: 20px;
+  padding-bottom: 95px;
+ 
+  
+  
+   /* Ajustar la posición horizontal si es necesario */
+}
+
+.cardApiImg {
+  border-radius: 20px;
+  border: 2px solid #000
+  
+}
+
+
 
 .read-the-docs {
   color: #888;
@@ -43,15 +114,14 @@
 
 .nav {
   display: flex;
- 
-  justify-content: space-between; 
-  align-items: center; 
+
+  justify-content: space-between;
+  align-items: center;
 }
 
-.form
-{
+.form {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; 
-  align-items: center; 
+  justify-content: space-between;
+  align-items: center;
 }

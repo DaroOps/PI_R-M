@@ -1,10 +1,17 @@
-const Card = ({id,name, image, onClose}) => {
+const Card = ({ id, name, image, onClose }) => {
+   //
+   // <button onClick={() => onClose(id)}>X</button>
    return (
-      <div>
-         <button onClick={()=>onClose(id)}>X</button>
-         
-         <h2>{name}</h2>
-         <img src={image} alt={name} /> 
+
+      <div className="card">
+         <div className="cardExternalBorder">
+            <div className="cardInternalBorder">
+               <div class="cardDotContainer"></div>
+               <p className="cardName">{name}</p>
+               <img className="cardApiImg" src={image} alt={name} />
+            </div>
+
+         </div>
       </div>
    );
 }
