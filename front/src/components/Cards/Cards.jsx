@@ -16,6 +16,7 @@ const Cards = ({characters, onClose}) => {
                            </Link>}
                
                      image={image}
+                     onClose={onClose}
                   /> 
                )
             })

@@ -1,5 +1,5 @@
 import { useState, useEffect} from "react";
-import {emailValidation, passwordValidation} from '../../functions/form/validation'
+import validations from '../../functions/form/validation'
 
 const Form = ({onLogin}) => {
 
@@ -19,23 +19,8 @@ const Form = ({onLogin}) => {
     const handleChange = (event) => {
         
 
-        console.log(userData);
-        console.log(event.target.name);
-
-        if(event.target.name === "email")
-        {
-            console.log("email Event "+userData?.email)
-            setErrors(emailValidation(userData?.email));
-            console.log("email error "+errors?.emailerr);
-        }
-        else if(event.target.name === "password")
-        {
-            console.log("password Event "+userData?.password)
-
-            setErrors(passwordValidation(userData?.password))
-
-            console.log("pass error "+errors?.passerr);
-        }
+        //console.log(userData);
+        //console.log(event.target.name);
       
         setUserData({
             ...userData,
@@ -43,13 +28,18 @@ const Form = ({onLogin}) => {
         });
     }
 
+    useEffect (()=>
+    {
+        setErrors(validations(userData));
+     
+    }, [userData])
+    
     const onSubmit = (event) => {
         
         event.preventDefault();
         onLogin(userData);
         setUserData({
-            email:'',
-            password: ''
+         
         })
     }
 
@@ -66,7 +56,7 @@ const Form = ({onLogin}) => {
                 
             />
 
-            <p style={{ color: 'red' }}>{errors?.emailerr}</p>
+            {errors.email !== '' && <p style={{ color: 'red' }}>{errors?.email}</p>}
 
             <label htmlFor="password">Password: </label>
             <input
@@ -77,11 +67,11 @@ const Form = ({onLogin}) => {
                 onChange={handleChange}
             />
 
-            <p style={{ color: 'red' }}>{errors?.passerr}</p>
+            {errors.password !== '' &&<p style={{ color: 'red' }}>{errors?.password}</p>}
 
             <button
                 type="onsumbit"
-                disabled={errors?.emailerr || errors?.passerr}>
+                disabled={errors?.email || errors?.password}>
                 Sumbit
             </button>
 

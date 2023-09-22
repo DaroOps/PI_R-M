@@ -1,46 +1,36 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../searchbar/SearchBar";
-import { useLocation } from "react-router-dom";
 
-const Nav = ({onSearch}) =>
-{
-    //const [randomId, setRandomId] = useState(null);
-
+const Nav = ({ onSearch }) => {
     const generateRandomId = () => {
         const num = Math.floor(Math.random() * 826) + 1;
-        //setRandomId(num);
-       
         onSearch(num);
-      };
-    
-    let path = useLocation();
-    
-    //console.log(path)
-    
-    if(path.pathname === '/')
-    {
-        return null;
-    }
+    };
 
-    return(
-            <div className="nav" >
-                
-            
+    return (
+        <section id="nav" >
+            <div id="navRouteIndex">
                 <Link to='/home' >
-                    <button>Home</button>
+                    <button id="homeButton">Home</button>
                 </Link>
-               
+
                 <Link to={'/about'}>
-                    <button>About</button>
+                    <button id="aboutButton">About</button>
                 </Link>
                 
-                <SearchBar onSearch={onSearch}/> 
-                <button onClick={generateRandomId}>Random</button>
+                <Link>
+                <button id="logoutButton">Log Out</button>
+                </Link>
 
-              
             </div>
+            <div id="navSearchbar">
+
+                <SearchBar onSearch={onSearch}  />
+                <button id='randomButton' onClick={generateRandomId}>Random</button>
+            </div>
+            
+        </section>
     );
 }
 
-export default Nav;
+export default Nav

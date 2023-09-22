@@ -5,7 +5,7 @@ import { Routes, Route, useLocation ,useNavigate} from "react-router-dom";
 
 import axios from 'axios';
 import Cards from './components/cards/Cards';
-import Nav from './components/nav/Nav';
+import Nav from './components/nav/Nav.jsx';
 import About from './components/about/About';
 import Detail from './components/detail/Detail';
 import Error from './components/error/Error';
@@ -68,14 +68,15 @@ function App() {
 
   return (
     <div className='App'>
-      <Nav onSearch={onSearch} />
+     
+      {useLocation().pathname !== '/'?  <Nav onSearch={onSearch}/>:null}
       <Routes>
         <Route path="/home" element={
           <Cards characters={characters} onClose={onClose} />} />
         <Route path='/about' element={<About />} />
         <Route path='/detail/:id' element={<Detail />} />
         <Route path='/' element={<Form onLogin={login}/>}  />
-        <Route path='/*' element={<Error />} />
+        <Route path='*' element={<Error />} />
 
       </Routes>
     </div>

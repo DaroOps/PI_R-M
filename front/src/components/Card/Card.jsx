@@ -1,12 +1,13 @@
 const Card = ({ id, name, image, onClose }) => {
-   //
-   // <button onClick={() => onClose(id)}>X</button>
+  
    return (
 
       <div className="card">
          <div className="cardExternalBorder">
+         <button className="cardCloseDot" onClick={() => onClose(id)}>X</button>
             <div className="cardInternalBorder">
-               <div class="cardDotContainer"></div>
+            
+               <div className="cardDotContainer"></div>
                <p className="cardName">{name}</p>
                <img className="cardApiImg" src={image} alt={name} />
             </div>
