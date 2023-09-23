@@ -3,6 +3,8 @@ import './App.css'
 import { useState, useEffect } from 'react';
 import { Routes, Route, useLocation ,useNavigate} from "react-router-dom";
 
+import  {useSelector} from "react-redux/es/hooks/useSelector";
+
 import axios from 'axios';
 import Cards from './components/cards/Cards';
 import Nav from './components/nav/Nav.jsx';
@@ -10,13 +12,16 @@ import About from './components/about/About';
 import Detail from './components/detail/Detail';
 import Error from './components/error/Error';
 import Form from './components/form/Form';
+import Favorites from './components/favorites/Favorites';
 
 function App() {
 
 
   const [characters, setCharacters] = useState([]);
 
-  //simulacion Base de Datos
+  const myFavorites  = useSelector((state) => state.myFavorites);
+
+  //#region  simulacion Base de Datos
   const navigate = useNavigate();
   const [access, setAccess] = useState(false);
   const EMAIL = 'eje@cosa.com';
@@ -32,7 +37,8 @@ function App() {
   useEffect(() => {
     !access && navigate('/');
   }, [access]);
-  //
+  //#endRegion final simulacion de base de datos
+  
   const onSearch = (id) => {
 
     if (Number(id) > 826 || Number(id) < 1) {
@@ -59,6 +65,7 @@ function App() {
   //console.log(characters);
 
   const onClose = (id) => {
+  
     const filterCharacters = characters.filter((character) => character.id !== parseInt(id));
     console.log('Called Close event')
     console.log(id)
@@ -75,6 +82,7 @@ function App() {
           <Cards characters={characters} onClose={onClose} />} />
         <Route path='/about' element={<About />} />
         <Route path='/detail/:id' element={<Detail />} />
+        <Route path='/favorites' element={<Favorites myFavorites={myFavorites} />}/>
         <Route path='/' element={<Form onLogin={login}/>}  />
         <Route path='*' element={<Error />} />
 

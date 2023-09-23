@@ -1,8 +1,9 @@
 import Card from '../card/Card';
 import { Link } from 'react-router-dom';
+import { addFav, removeFav } from "../../redux/actions/actions";
 
 const Cards = ({characters, onClose}) => {
-   
+
    return (
    <div>
       {
@@ -17,6 +18,10 @@ const Cards = ({characters, onClose}) => {
                
                      image={image}
                      onClose={onClose}
+                     addFav= {addFav}
+                     removeFav={removeFav}
+                  
+                  
                   /> 
                )
             })
