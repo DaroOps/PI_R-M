@@ -39,7 +39,8 @@ const Form = ({onLogin}) => {
         event.preventDefault();
         onLogin(userData);
         setUserData({
-         
+         email: userData.email,
+         password: userData.password
         })
     }
 

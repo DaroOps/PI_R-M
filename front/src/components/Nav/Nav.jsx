@@ -1,39 +1,61 @@
 import { Link } from "react-router-dom";
 import SearchBar from "../searchbar/SearchBar";
+import { useNavigate } from "react-router-dom";
+import './Nav.modules.css';
 
 const Nav = ({ onSearch }) => {
+
+    const navigate = useNavigate();
+
     const generateRandomId = () => {
         const num = Math.floor(Math.random() * 826) + 1;
         onSearch(num);
     };
 
+    const performLogout = () => {
+        localStorage.clear();
+        console.log("LOGOUT CLICK " + localStorage.getItem('access'));
+        navigate('/');
+    }
+
     return (
-        <section id="nav" >
-            <div id="navRouteIndex">
-                <Link to='/home' >
-                    <button id="homeButton">Home</button>
-                </Link>
+        <div className="nav" >
 
-                <Link to='/favorites'>
-                    <button id="favoritesButton">Favorites</button>
-                </Link>
+            <div className="logo"><h3>LOGO</h3></div>
 
-                <Link to={'/about'}>
-                    <button id="aboutButton">About</button>
-                </Link>
+            <div className="navRouteIndex">
                 
-                <Link>
-                <button id="logoutButton">Log Out</button>
-                </Link>
+                <div className="homeButton">
+                    <Link to='/home' >
+                        <button >Home</button>
+                    </Link>
+                </div>
 
-            </div>
-            <div id="navSearchbar">
+                <div className="favoritesButton">
+                    <Link to='/favorites'>
+                        <button >Favorites</button>
+                    </Link>
+                </div>
 
-                <SearchBar onSearch={onSearch}  />
-                <button id='randomButton' onClick={generateRandomId}>Random</button>
+                <div className="aboutButton">
+                    <Link to={'/about'}>
+                        <button >About</button>
+                    </Link>
+                </div>
+
+                <div className="navSearchbar">
+                    <div className="searchBar">
+                        <SearchBar onSearch={onSearch} />
+                    </div>
+                    <div className="randomButton">
+                        <button onClick={generateRandomId}>?</button>
+                    </div>
+                    <div className="logoutButton">
+                        <button onClick={performLogout}>Log Out</button>
+                    </div>
+                </div>
             </div>
-            
-        </section>
+        </div>
     );
 }
 

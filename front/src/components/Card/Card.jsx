@@ -43,6 +43,7 @@ const Card = ({ id, name, image, onClose, addFav, removeFav }) => {
             }
             <div className="cardInternalBorder">
                {
+                  //mal
                   isFav ? (
                      <button onClick={handleFavorite}>❤️</button>
                   ) : (

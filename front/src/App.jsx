@@ -1,9 +1,9 @@
 import './App.css'
 
 import { useState, useEffect } from 'react';
-import { Routes, Route, useLocation ,useNavigate} from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 
-import  {useSelector} from "react-redux/es/hooks/useSelector";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 import axios from 'axios';
 import Cards from './components/cards/Cards';
@@ -19,7 +19,7 @@ function App() {
 
   const [characters, setCharacters] = useState([]);
 
-  const myFavorites  = useSelector((state) => state.myFavorites);
+  const myFavorites = useSelector((state) => state.myFavorites);
 
   //#region  simulacion Base de Datos
   const navigate = useNavigate();
@@ -29,16 +29,38 @@ function App() {
 
   function login(userData) {
     if (userData.password === PASSWORD && userData.email === EMAIL) {
+      window.localStorage.setItem('access', true);
       setAccess(true);
       navigate('/home');
+
+      console.log('onAccess ' + window.localStorage.getItem('access'));
+    }
+    else {
+      window.localStorage.setItem('access', false)
+
+      console.log('onFAILAccess ' + window.localStorage.getItem('access'));
     }
   }
 
+
+ 
   useEffect(() => {
-    !access && navigate('/');
-  }, [access]);
+    if (!window.localStorage.getItem('access')) {
+      if (!access) {
+        navigate('/');
+      }
+      else {
+        navigate('/home');
+      }
+    
+    }
+
+    // !access&&navigate('/');
+
+    console.log('on mount ' + window.localStorage.getItem('access'));
+  }, []);
   //#endRegion final simulacion de base de datos
-  
+
   const onSearch = (id) => {
 
     if (Number(id) > 826 || Number(id) < 1) {
@@ -65,7 +87,7 @@ function App() {
   //console.log(characters);
 
   const onClose = (id) => {
-  
+
     const filterCharacters = characters.filter((character) => character.id !== parseInt(id));
     console.log('Called Close event')
     console.log(id)
@@ -75,16 +97,16 @@ function App() {
 
   return (
     <div className='App'>
-     
-      {useLocation().pathname !== '/'?  <Nav onSearch={onSearch}/>:null}
+
+      {useLocation().pathname !== '/' ? <Nav onSearch={onSearch} /> : null}
       <Routes>
         <Route path="/home" element={
           <Cards characters={characters} onClose={onClose} />} />
         <Route path='/about' element={<About />} />
         <Route path='/detail/:id' element={<Detail />} />
-        <Route path='/favorites' element={<Favorites myFavorites={myFavorites} />}/>
-        <Route path='/' element={<Form onLogin={login}/>}  />
-        <Route path='*' element={<Error />} />
+        <Route path='/favorites' element={<Favorites myFavorites={myFavorites} />} />
+        <Route path='/' element={<Form onLogin={login} />} />
+        <Route path='/*' element={<Error />} />
 
       </Routes>
     </div>

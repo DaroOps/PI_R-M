@@ -3,10 +3,9 @@ export function emailValidation(userdata) {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@?$/;
    
     let errors = {};
-
     //console.log("validationJs email"+userdata);
 
-    if (userdata.length < 3) {
+    if (userdata?.length < 3) {
         errors.email = 'Debe ser mayor que 3 caracteres'
     }
 
