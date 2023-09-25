@@ -1,0 +1,25 @@
+@media only screen and (max-width : 1600px) {
+
+	.searchComponent {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: center;
+		align-items: center;
+		align-content: flex-end;
+
+		/* background-color: beige; */
+	}
+
+	.searchButton {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: center;
+		align-items: stretch;
+		padding-left: 1%;
+		align-content: flex-end;
+
+		/* background-color: rgb(0, 132, 255); */
+	}
+}
