@@ -1,6 +1,6 @@
 import Card from '../card/Card';
 import { Link } from 'react-router-dom';
-import { addFav, removeFav } from "../../redux/actions/actions";
+
 
 import './Cards.modules.css';
 
@@ -12,19 +12,13 @@ const Cards = ({characters, onClose}) => {
          characters.map(({id, name, image}) => {
                return(
                   <Card 
+                    
                      key={id}
                      id={id}
-                     name={<Link to={`/detail/${id}`} >
-                           <h3 className="card-name">{name}</h3>
-                           </Link>}
-               
-                     image={image}
+                     name={ <Link to={`/detail/${id}`}  style={{textDecoration: 'none', color: 'inherit', fontWeight:'bolder', fontSize:'150%'}}>{name}</Link>}
                      onClose={onClose}
-                     addFav= {addFav}
-                     removeFav={removeFav}
-                  
-                  
-                  /> 
+                     image={image}
+                  />     
                )
             })
       }

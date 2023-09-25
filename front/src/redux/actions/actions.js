@@ -17,7 +17,7 @@ const addFav = (id) => {
 const removeFav = (id) => {
     return {
         type: REMOVE_FAV,
-        payload: parseInt(id)
+        payload: id
     }
 }
 

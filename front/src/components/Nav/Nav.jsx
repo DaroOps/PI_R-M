@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import LinkButton from "../linkbutton/LinkButton";
 import SearchBar from "../searchbar/SearchBar";
 import { useNavigate } from "react-router-dom";
 import './Nav.modules.css';
@@ -24,23 +24,13 @@ const Nav = ({ onSearch }) => {
             <div className="logo"><h3>LOGO</h3></div>
 
             <div className="navRouteIndex">
-                <div className="homeButton">
-                    <Link to='/home' >
-                        <button >Home</button>
-                    </Link>
-                </div>
+                
+                    <LinkButton link={'/home'} text='Home' />
 
-                <div className="favoritesButton">
-                    <Link to='/favorites'>
-                        <button >Favorites</button>
-                    </Link>
-                </div>
-
-                <div className="aboutButton">
-                    <Link to={'/about'}>
-                        <button >About</button>
-                    </Link>
-                </div>
+                    <LinkButton link={'/favorites'} text='Favorites' />
+                
+                    <LinkButton link={'/about'} text='About' />
+                
             </div>
 
             <div className="navSearchbar">

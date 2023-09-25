@@ -1,4 +1,4 @@
-import './App.css'
+//import './App.css'
 
 import { useState, useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
@@ -99,6 +99,7 @@ function App() {
     <div className='App'>
 
       {useLocation().pathname !== '/' ? <Nav onSearch={onSearch} /> : null}
+     
       <Routes>
         <Route path="/home" element={
           <Cards characters={characters} onClose={onClose} />} />
@@ -109,6 +110,7 @@ function App() {
         <Route path='/*' element={<Error />} />
 
       </Routes>
+      
     </div>
   );
 }
