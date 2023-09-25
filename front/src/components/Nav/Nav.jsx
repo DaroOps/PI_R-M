@@ -24,7 +24,6 @@ const Nav = ({ onSearch }) => {
             <div className="logo"><h3>LOGO</h3></div>
 
             <div className="navRouteIndex">
-                
                 <div className="homeButton">
                     <Link to='/home' >
                         <button >Home</button>
@@ -42,19 +41,21 @@ const Nav = ({ onSearch }) => {
                         <button >About</button>
                     </Link>
                 </div>
+            </div>
 
-                <div className="navSearchbar">
-                    <div className="searchBar">
-                        <SearchBar onSearch={onSearch} />
-                    </div>
-                    <div className="randomButton">
-                        <button onClick={generateRandomId}>?</button>
-                    </div>
-                    <div className="logoutButton">
-                        <button onClick={performLogout}>Log Out</button>
-                    </div>
+            <div className="navSearchbar">
+                <div className="searchBar">
+                    <SearchBar onSearch={onSearch} />
+                </div>
+                <div className="randomButton">
+                    <button onClick={generateRandomId}>?</button>
                 </div>
             </div>
+
+            <div className="logoutButton">
+                <button onClick={performLogout}>Log Out</button>
+            </div>
+
         </div>
     );
 }

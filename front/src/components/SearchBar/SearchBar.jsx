@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './SearchBar.modules.css';
 
 const SearchBar = ({onSearch}) => {
 
@@ -10,9 +11,13 @@ const SearchBar = ({onSearch}) => {
    }   
 
    return (
-      <div>
-         <input id='inputBarSearch' type='search' value={id} onChange={handleChange}/>
-         <button id='searchButton' onClick={()=>onSearch(id)}>Search</button> 
+      <div className="searchComponent">
+         <div className="inputDiv">
+            <input type='search' value={id} onChange={handleChange}/>
+         </div>
+         <div className="searchButton">
+            <button onClick={()=>onSearch(id)}>Search</button> 
+         </div>
       </div>
    );
 }

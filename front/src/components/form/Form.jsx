@@ -45,7 +45,7 @@ const Form = ({onLogin}) => {
     }
 
     return (
-
+        
         <form onSubmit={onSubmit} className="form">
             <label htmlFor="email">E-mail: </label>
             <input

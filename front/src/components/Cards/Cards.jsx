@@ -2,10 +2,12 @@ import Card from '../card/Card';
 import { Link } from 'react-router-dom';
 import { addFav, removeFav } from "../../redux/actions/actions";
 
+import './Cards.modules.css';
+
 const Cards = ({characters, onClose}) => {
 
    return (
-   <div>
+   <div className='cardsTable'>
       {
          characters.map(({id, name, image}) => {
                return(
