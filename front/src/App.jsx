@@ -1,18 +1,19 @@
-//import './App.css'
-
-import { useState, useEffect } from 'react';
-import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
-
-import { useSelector } from "react-redux/es/hooks/useSelector";
-
-import axios from 'axios';
+/* Componentes a renderizar */
+import Nav from './components/nav/Nav';
+import Form from './components/form/Form';
 import Cards from './components/cards/Cards';
-import Nav from './components/nav/Nav.jsx';
 import About from './components/about/About';
 import Detail from './components/detail/Detail';
-import Error from './components/error/Error';
-import Form from './components/form/Form';
 import Favorites from './components/favorites/Favorites';
+
+/* Hooks */
+import { useState, useEffect } from 'react';
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux/es/hooks/useSelector';
+
+/* Dependencias */
+import axios from "axios";
+
 
 function App() {
 
