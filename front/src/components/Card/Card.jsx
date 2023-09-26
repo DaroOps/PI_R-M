@@ -63,14 +63,14 @@ const Card = ({ id, name, image, onClose }) => {
                </div>
 
                <div className="favoriteButton">
-                  {
-                     isFav ? (
-                        <button onClick={handleFavorite}>❤️</button>
-                     ) : (
-                        <button onClick={handleFavorite}>🤍</button>
-                     )
-
-                  }
+                  
+                     {
+                        isFav ? (
+                           <button className="favButton" onClick={handleFavorite}>❤️</button>
+                        ) : (
+                           <button className="favButton" onClick={handleFavorite}>🤍</button>
+                        )
+                     }
                </div>
                <div className="imageCardContainer">
                   <img className="cardApiImg" src={image} alt={name} />

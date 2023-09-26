@@ -2,11 +2,49 @@
 	margin: 2%;
 	border-radius: 11px;
 	min-width: 340px;
+
 	/* border-style: inset; */
 }
 
-.favoriteButton {
+.favoriteButton
+{
 	position: relative;
+	
+	right: 2%;
+	
+	
+	/* background-color: rgba(11, 46, 77, 0.363); */
+
+	display: flex;
+	
+	
+}
+
+.favButton {
+	position: relative;
+	top: 5px;
+	
+	border-radius: 50%;
+
+	
+	
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	
+	font-size: xx-large;
+	
+	border: 3px solid transparent;
+	background: 
+        linear-gradient(#303054, #303054) padding-box,
+        linear-gradient(133deg , transparent 50%,  #ffffff 50%) border-box;
+   
+
+	
+}
+
+.favButton:hover {
+	font-size: xx-large;
 }
 
 .cardExternalBorder {
@@ -14,6 +52,8 @@
 
 	border-style: solid;
 	border-radius: 11px;
+	background-color: #303054;
+
 }
 
 .closeCardContainer {
@@ -36,7 +76,7 @@
 .cardInternalBorder {
 	display: flex;
 	flex-direction: column;
-	margin-left: 5%;
+	margin-left: 4%;
 	margin-right: 5%;
 	border-radius: 11px;
 
@@ -51,7 +91,7 @@
 	justify-content: center;
 	align-items: stretch;
 	align-content: stretch;
-	max-height: 20px;
+	max-height: 0px;
 }
 
 .favoriteButton {
@@ -67,5 +107,18 @@
 }
 
 .card:hover {
-	box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30);
+	box-shadow: 0px 0px 30px 1px rgba(109, 196, 27, 0.699);
 }
+
+/* 
+position: relative;
+	top: 4%;
+	right: 5px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	background-color: #303054;
+	border-radius: 50%; */
