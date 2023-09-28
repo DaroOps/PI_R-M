@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { addFav, removeFav } from "../../redux/actions/actions";
 import './Card.modules.css';
 
-const Card = ({ id, name, image, onClose }) => {
+const Card = ({ id, name, image, onClose}) => {
    const [isFav, setIsFav] = useState(false);
 
    const myFavorites = useSelector((state) => state.myFavorites);
@@ -38,24 +38,22 @@ const Card = ({ id, name, image, onClose }) => {
             <div className="closeCardContainer">
                <div className="closeButton">
                   {
-
                      closeFunc ?
                         (
                            <button className="cardCloseDot" onClick={(() => onClose(id))}>X</button>
                         ) :
                         (
-                           <></>
+                           null
                         )
                   }
                </div>
-
                <div className="idContainer">
+               
                   <div className="idHolder">
                      <p>{id}</p>
                   </div>
                </div>
             </div>
-
 
             <div className="cardInternalBorder">
                <div className="cardName">

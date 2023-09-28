@@ -5,6 +5,7 @@ import Cards from './components/cards/Cards';
 import About from './components/about/About';
 import Detail from './components/detail/Detail';
 import Favorites from './components/favorites/Favorites';
+import Error from './components/error/Error'
 
 /* Hooks */
 import { useState, useEffect } from 'react';
@@ -108,7 +109,7 @@ function App() {
         <Route path='/detail/:id' element={<Detail />} />
         <Route path='/favorites' element={<Favorites myFavorites={myFavorites} />} />
         <Route path='/' element={<Form onLogin={login} />} />
-        <Route path='/*' element={<Error />} />
+        <Route path='/*' element={<Error/>} />
 
       </Routes>
       

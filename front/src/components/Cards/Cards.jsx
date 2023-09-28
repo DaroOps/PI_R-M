@@ -18,6 +18,7 @@ const Cards = ({characters, onClose}) => {
                      name={ <Link to={`/detail/${id}`}  style={{textDecoration: 'none', color: 'inherit', fontWeight:'bolder', fontSize:'150%'}}>{name}</Link>}
                      onClose={onClose}
                      image={image}
+                    
                   />     
                )
             })

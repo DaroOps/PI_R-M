@@ -9,23 +9,29 @@ const Favorites = ({myFavorites}) => {
 
     const [aux, setAux] = useState(false);
 
-    const handleOrder = (event)=>{
-        setAux(!aux);
-        dispatch(orderCards(event.target.value));
-    }
-    const handleFilter = (event)=>{
-        dispatch(filterCards(event.target.value));
+    const handleChange = (event)=>{
+
         console.log(event.target);
+        if(event.target.name === 'filter'){
+            dispatch(filterCards(event.target.value));  
+        }
+        else{
+            setAux(!aux);
+            dispatch(orderCards(event.target.value));
+            // console.log(event.target);
+        }
+        
     }
+    
 
     return (
        <div>
-            <select onChange={handleOrder}>
+            <select name="order" onChange={handleChange}>
                 <option value="A">Acendente</option>
                 <option value="D">Decendente</option>
             </select>
 
-            <select onChange={handleFilter}>
+            <select name="filter" onChange={handleChange}>
                 <option value="All">All Characters</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>

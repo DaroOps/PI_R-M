@@ -1,59 +1,98 @@
 .card {
 	margin: 2%;
-	border-radius: 11px;
+	
 	min-width: 340px;
-
-	/* border-style: inset; */
+	-webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+	transition: all 0.3s ease;
+	position: relative;
+	border-radius: 11px;
+	border: 3px solid #ffffff;
 }
 
-.favoriteButton
+.card:hover {
+	cursor: pointer;
+	/* transform: scale(1.05, 1.05); */
+	
+}
+.cardExternalBorder > *
 {
 	position: relative;
+	z-index: 2;
+}
+.cardExternalBorder::after {
+	position: absolute;
+	border-radius: 11px;
+	top: 0;
+
+	content: "";
 	
+	width: 100%;
+	height: 100%;
+
+	z-index: 1;
+
+	box-shadow: 0px -3px 38px 98px rgba(255, 255, 255, 0),
+		0px 0px 4px 5px rgba(229, 236, 45, 1),
+		0px 0px 6px 20px rgba(110, 196, 27, 1),
+		0px 0px 20px 30px rgba(68, 138, 50, 1);
+
+	opacity: 0;
+	-webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+	transition: opacity 0.3s ease;
+}
+
+.cardExternalBorder:hover::after {
+	
+	opacity: 1;
+	
+}
+
+.favoriteButton {
+	position: relative;
+
 	right: 2%;
-	
-	
+
+
 	/* background-color: rgba(11, 46, 77, 0.363); */
 
 	display: flex;
-	
-	
+
+
 }
 
 .favButton {
 	position: relative;
 	top: 5px;
-	
+
 	border-radius: 50%;
 
-	
-	
+
+
 	padding: 0;
 	font: inherit;
 	cursor: pointer;
-	
-	font-size: xx-large;
-	
-	border: 3px solid transparent;
-	background: 
-        linear-gradient(#303054, #303054) padding-box,
-        linear-gradient(133deg , transparent 50%,  #ffffff 50%) border-box;
-   
 
-	
+	font-size: xx-large;
+
+	border: 3px solid transparent;
+	background:
+		linear-gradient(#303054, #303054) padding-box,
+		linear-gradient(133deg, transparent 50%, #ffffff 50%) border-box;
+
+
+
 }
 
 .favButton:hover {
 	font-size: xx-large;
+
 }
 
-.cardExternalBorder {
-	/* background-color: rgb(151, 151, 151); */
 
-	border-style: solid;
-	border-radius: 11px;
-	background-color: #303054;
 
+.idHolder
+{
+	background-color: blueviolet;
 }
 
 .closeCardContainer {
@@ -100,15 +139,14 @@
 }
 
 .cardApiImg {
-	border-style: solid;
+	background-color: aliceblue;
+	
 	margin-bottom: 5%;
-	border-color: aliceblue;
-	border-radius: 20px;
+	border-radius:20px ;
+	border: 3px solid #ffffff;
 }
 
-.card:hover {
-	box-shadow: 0px 0px 30px 1px rgba(109, 196, 27, 0.699);
-}
+
 
 /* 
 position: relative;
