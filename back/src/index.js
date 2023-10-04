@@ -14,6 +14,12 @@ http.createServer((request, response) => {
         const urlParts = request.url.split('/');
         const id = urlParts[3];
         
+        
+        const character = data.find((character) => character.id == id);
+        response
+            .writeHead(200, { "Content-type": "application/json" })
+            .end(JSON.stringify(character));
+    
         if(id){
 
         getCharById(response, id);
