@@ -1,6 +1,7 @@
 const http = require('http');
 const data = require('./utils/data');
 const getCharById = require('./controllers/getCharById');
+const { error } = require('console');
 
 
 
@@ -11,14 +12,22 @@ http.createServer((request, response) => {
 
     if (request.url.includes('/rickandmorty/character/')) {
 
+
+
         const urlParts = request.url.split('/');
         const id = urlParts[3];
-        
-        
+
+
         const character = data.find((character) => character.id == id);
-        response
+        if (character) {
+            return response
+                .writeHead(404, { "Content-type": "application/json" })
+                .end(JSON.stringify(character));
+        }
+        return response
             .writeHead(200, { "Content-type": "application/json" })
-            .end(JSON.stringify(character));
+            .end({ error: "charcter id not found" });
+
     
         if(id){
 
@@ -29,7 +38,7 @@ http.createServer((request, response) => {
                 .end(JSON.stringify({ error: "ID de personaje no válido" }));
         }
         
-       
+   
     }
     else {
         response
