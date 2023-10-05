@@ -90,7 +90,7 @@ function App() {
 
   const onClose = (id) => {
 
-    const filterCharacters = characters.filter((character) => character.id !== parseInt(id));
+    const filterCharacters = characters.filter((character) => character.id != parseInt(id));
     console.log('Called Close event')
     console.log(id)
     console.log(filterCharacters)

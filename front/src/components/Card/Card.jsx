@@ -40,7 +40,7 @@ const Card = ({ id, name, image, onClose}) => {
                   {
                      closeFunc ?
                         (
-                           <button className="cardCloseDot" onClick={(() => onClose(id))}>X</button>
+                           <button className="cardCloseDot" onClick={(() => closeFunc(id))}>X</button>
                         ) :
                         (
                            null
