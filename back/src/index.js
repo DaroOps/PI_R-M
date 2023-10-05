@@ -1,6 +1,7 @@
 const http = require('http');
 const data = require('./utils/data');
-const url = require('url');
+const getCharById = require('./controllers/getCharById');
+
 
 
 
@@ -10,20 +11,23 @@ http.createServer((request, response) => {
 
     if (request.url.includes('/rickandmorty/character/')) {
 
-        
         const urlParts = request.url.split('/');
-        const id = Number(urlParts[3]);
+        const id = urlParts[3];
         
+        if(id){
+
+        getCharById(response, id);
+        }else {
+            response
+                .writeHead(400, { "Content-type": "application/json" })
+                .end(JSON.stringify({ error: "ID de personaje no válido" }));
+        }
         
-        const character = data.find((character) => character.id === id);
-        response
-            .writeHead(200, { "Content-type": "application/json" })
-            .end(JSON.stringify(character));
-    
+       
     }
     else {
         response
-            .writeHead(404, { "Content-type": "application/json"})
+            .writeHead(404, { "Content-type": "application/json" })
             .end(JSON.stringify({ error: "no se especificó una ruta o la ruta indicada no existe " }))
     }
 }).listen(3001, '127.0.0.1');
