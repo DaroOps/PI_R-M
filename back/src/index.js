@@ -1,48 +1,35 @@
-const http = require('http');
-const data = require('./utils/data');
-const getCharById = require('./controllers/getCharById');
-const { error } = require('console');
+const express = require('express');
+
+const routes = require('./routes/index');
+
+const PORT = 3001;
+
+const server = express();
+
+server.use(express.json());
 
 
 
-
-http.createServer((request, response) => {
-
-    response.setHeader('Access-Control-Allow-Origin', '*');
-
-    if (request.url.includes('/rickandmorty/character/')) {
-
-
-
-        const urlParts = request.url.split('/');
-        const id = urlParts[3];
-
-
-        const character = data.find((character) => character.id == id);
-        if (character) {
-            return response
-                .writeHead(404, { "Content-type": "application/json" })
-                .end(JSON.stringify(character));
-        }
-        return response
-            .writeHead(200, { "Content-type": "application/json" })
-            .end({ error: "charcter id not found" });
-
+server.use((req, res, next) => {
     
-        if(id){
-
-        getCharById(response, id);
-        }else {
-            response
-                .writeHead(400, { "Content-type": "application/json" })
-                .end(JSON.stringify({ error: "ID de personaje no válido" }));
-        }
-        
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header(
+       'Access-Control-Allow-Headers',
+       'Origin, X-Requested-With, Content-Type, Accept'
+    );
+    res.header(
+       'Access-Control-Allow-Methods',
+       'GET, POST, OPTIONS, PUT, DELETE'
+    );
    
-    }
-    else {
-        response
-            .writeHead(404, { "Content-type": "application/json" })
-            .end(JSON.stringify({ error: "no se especificó una ruta o la ruta indicada no existe " }))
-    }
-}).listen(3001, '127.0.0.1');
+    next();
+ });
+
+server.use('/rickandmorty', routes)
+
+server.listen(PORT, ()=>{
+  
+    console.log('Server raised in port: ' + PORT);
+});
+

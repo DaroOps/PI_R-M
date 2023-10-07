@@ -2,20 +2,20 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { addFav, removeFav } from "../../redux/actions/actions";
+import { Link } from 'react-router-dom';
+
 import './Card.modules.css';
 
-const Card = ({ id, name, image, onClose}) => {
+const Card = ({ id, name, image, onClose, gender }) => {
    const [isFav, setIsFav] = useState(false);
 
    const myFavorites = useSelector((state) => state.myFavorites);
 
    useEffect(() => {
 
-      myFavorites?.forEach((fav) => {
-         if (fav.id === Number(id)) {
-            setIsFav(true);
-         }
-      });
+      const isCharacterFav = myFavorites.some((fav) => fav.id === Number(id));
+      setIsFav(isCharacterFav);
+
    }, [myFavorites]);
 
    const dispatch = useDispatch();
@@ -25,13 +25,13 @@ const Card = ({ id, name, image, onClose}) => {
 
 
    const handleFavorite = () => {
-      isFav ? (setIsFav(false), dispatch(removeFav(id))) : (setIsFav(true), dispatch(addFav(id)));
-      //console.log(isFav)
+      isFav ? (setIsFav(false), dispatch(removeFav(id))) : (setIsFav(true), dispatch(addFav({ id , name, image, gender})));
+      //console.log('MA<W', image)
    }
 
 
    return (
-      
+
       <div className="card">
          <div className="cardExternalBorder">
 
@@ -48,7 +48,7 @@ const Card = ({ id, name, image, onClose}) => {
                   }
                </div>
                <div className="idContainer">
-               
+
                   <div className="idHolder">
                      <p>{id}</p>
                   </div>
@@ -57,18 +57,20 @@ const Card = ({ id, name, image, onClose}) => {
 
             <div className="cardInternalBorder">
                <div className="cardName">
-                  {name}
+                  <Link to={`/detail/${id}`} style={{ textDecoration: 'none', color: 'inherit', fontWeight: 'bolder', fontSize: '150%' }}>
+                     {name}
+                  </Link>
                </div>
 
                <div className="favoriteButton">
-                  
-                     {
-                        isFav ? (
-                           <button className="favButton" onClick={handleFavorite}>❤️</button>
-                        ) : (
-                           <button className="favButton" onClick={handleFavorite}>🤍</button>
-                        )
-                     }
+
+                  {
+                     isFav ? (
+                        <button className="favButton" onClick={handleFavorite}>❤️</button>
+                     ) : (
+                        <button className="favButton" onClick={handleFavorite}>🤍</button>
+                     )
+                  }
                </div>
                <div className="imageCardContainer">
                   <img className="cardApiImg" src={image} alt={name} />

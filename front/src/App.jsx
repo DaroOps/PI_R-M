@@ -26,40 +26,33 @@ function App() {
   //#region  simulacion Base de Datos
   const navigate = useNavigate();
   const [access, setAccess] = useState(false);
-  const EMAIL = 'eje@cosa.com';
-  const PASSWORD = '12345678a';
+  // const EMAIL = 'eje@cosa.com';
+  // const PASSWORD = '12345678a';
 
   function login(userData) {
-    if (userData.password === PASSWORD && userData.email === EMAIL) {
-      window.localStorage.setItem('access', true);
-      setAccess(true);
-      navigate('/home');
+    const { email, password } = userData;
+    const URL = 'http://localhost:3001/rickandmorty/login/';
+    axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+      const { access } = data;
+      setAccess(data);
+      console.log(data);
+      access && navigate('/home');
+    });
 
-      console.log('onAccess ' + window.localStorage.getItem('access'));
-    }
-    else {
-      window.localStorage.setItem('access', false)
-
-      console.log('onFAILAccess ' + window.localStorage.getItem('access'));
-    }
+   
   }
 
-
- 
   useEffect(() => {
-    if (!window.localStorage.getItem('access')) {
-      if (!access) {
-        navigate('/');
-      }
-      else {
-        navigate('/home');
-      }
-    
-    }
 
+    if (!access) {
+      navigate('/login');
+
+    }
+    else {
+      navigate('/home');
+    }
     // !access&&navigate('/');
 
-    console.log('on mount ' + window.localStorage.getItem('access'));
   }, []);
   //#endRegion final simulacion de base de datos
 
@@ -100,19 +93,19 @@ function App() {
   return (
     <div className='App'>
 
-      {useLocation().pathname !== '/' ? <Nav onSearch={onSearch} /> : null}
-     
+      {useLocation().pathname !== '/login' ? <Nav onSearch={onSearch} /> : null}
+
       <Routes>
         <Route path="/home" element={
           <Cards characters={characters} onClose={onClose} />} />
         <Route path='/about' element={<About />} />
         <Route path='/detail/:id' element={<Detail />} />
         <Route path='/favorites' element={<Favorites myFavorites={myFavorites} />} />
-        <Route path='/' element={<Form onLogin={login} />} />
-        <Route path='/*' element={<Error/>} />
+        <Route path='/login' element={<Form onLogin={login} />} />
+        <Route path='/*' element={<Error />} />
 
       </Routes>
-      
+
     </div>
   );
 }

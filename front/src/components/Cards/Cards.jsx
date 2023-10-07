@@ -1,5 +1,5 @@
 import Card from '../card/Card';
-import { Link } from 'react-router-dom';
+
 
 
 import './Cards.modules.css';
@@ -9,15 +9,16 @@ const Cards = ({characters, onClose}) => {
    return (
    <div className='cardsTable'>
       {
-         characters.map(({id, name, image}) => {
+         characters.map((character) => {
                return(
                   <Card 
                     
-                     key={id}
-                     id={id}
-                     name={ <Link to={`/detail/${id}`}  style={{textDecoration: 'none', color: 'inherit', fontWeight:'bolder', fontSize:'150%'}}>{name}</Link>}
+                     key={character.id}
+                     id={character.id}
+                     name={ character.name}
                      onClose={onClose}
-                     image={image}
+                     image={character.image}
+                     gender={character.gender}
                     
                   />     
                )
