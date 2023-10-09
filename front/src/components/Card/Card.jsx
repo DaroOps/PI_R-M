@@ -25,7 +25,7 @@ const Card = ({ id, name, image, onClose, gender }) => {
 
 
    const handleFavorite = () => {
-      isFav ? (setIsFav(false), dispatch(removeFav(id))) : (setIsFav(true), dispatch(addFav({ id , name, image, gender})));
+      isFav ? (setIsFav(false), dispatch(removeFav(id))) : (setIsFav(true), dispatch(addFav({ id, name, image, gender })));
       //console.log('MA<W', image)
    }
 
@@ -34,33 +34,37 @@ const Card = ({ id, name, image, onClose, gender }) => {
 
       <div className="card">
          <div className="cardExternalBorder">
-
-            <div className="closeCardContainer">
-               <div className="closeButton">
-                  {
-                     closeFunc ?
-                        (
-                           <button className="cardCloseDot" onClick={(() => closeFunc(id))}>X</button>
-                        ) :
-                        (
-                           null
-                        )
-                  }
+            <div className="info-header">
+               <div className="name-container">
+                  <div className="icon-name-header"></div>
+                  <div className="name-header">Rick & Morty</div>
                </div>
-               <div className="idContainer">
-
-                  <div className="idHolder">
-                     <p>{id}</p>
-                  </div>
-               </div>
+               <div className="line-header"></div>
+               <div className="id-header">n°{id}</div>
             </div>
 
-            <div className="cardInternalBorder">
+
+
+
+            <div className="cardInternalBorder">  
                <div className="cardName">
-                  <Link to={`/detail/${id}`} style={{ textDecoration: 'none', color: 'inherit', fontWeight: 'bolder', fontSize: '150%' }}>
+                  <Link className="card-link" to={`/detail/${id}`} style={{ textDecoration: 'none', color: 'inherit', fontWeight: 'bolder', fontSize: '150%' }}>
                      {name}
                   </Link>
+                  <div className="closeButton">
+                     {
+                        closeFunc ?
+                           (
+                              <div className="close-button" onClick={(() => closeFunc(id))}>x</div>
+                              // <button className="cardCloseDot" onClick={(() => closeFunc(id))}>X</button>
+                           ) :
+                           (
+                              null
+                           )
+                     }
+                  </div>
                </div>
+
 
                <div className="favoriteButton">
 
