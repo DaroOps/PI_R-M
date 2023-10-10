@@ -4,28 +4,38 @@ import axios from 'axios'
 
  const addFav = (character) => {
    const endpoint = 'http://localhost:3001/rickandmorty/fav';
-   return (dispatch) => {
+   
+   
+   return  async (dispatch) => {
       //console.log('Datos recibidos en addFav antes de la serialización:', character);
       //console.log(character.name )
-      axios.post(endpoint, character).then(({ data }) => {
-         // console.log('Datos recibidos en addFav después de la solicitud:', data);
+      try {
+         const {data} = await axios.post(endpoint, character);
+         
          return dispatch({
             type: ADD_FAV,
             payload: data,
          });
-      });
+      } catch (error) {
+         throw Error(error.message);
+      }
    };
 };
 
  const removeFav = (id) => {
     const endpoint = 'http://localhost:3001/rickandmorty/fav/' + id;
-    return (dispatch) => {
-       axios.delete(endpoint).then(({ data }) => {
-          return dispatch({
-             type: REMOVE_FAV,
-             payload: data,
-       });
-       });
+    return async (dispatch) => {
+
+      try {
+         const {data} = await axios.delete(endpoint);
+         return dispatch({
+            type: REMOVE_FAV,
+            payload: data,
+         });
+      } catch (error) {
+         throw Error(error.message)
+      }
+
     };
  };
 
