@@ -251,7 +251,7 @@
 
 /* add hover to .flip-card.charged for edit 
 in best way the back card style */
-.flip-card.charged:hover .flip-card-inner {
+.flip-card.charged .flip-card-inner {
 	transform: rotateY(0deg);
 }
 
