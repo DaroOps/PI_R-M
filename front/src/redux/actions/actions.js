@@ -5,8 +5,8 @@ import axios from 'axios'
  const addFav = (character) => {
    const endpoint = 'http://localhost:3001/rickandmorty/fav';
    return (dispatch) => {
-      console.log('Datos recibidos en addFav antes de la serialización:', character);
-      console.log(character.name )
+      //console.log('Datos recibidos en addFav antes de la serialización:', character);
+      //console.log(character.name )
       axios.post(endpoint, character).then(({ data }) => {
          // console.log('Datos recibidos en addFav después de la solicitud:', data);
          return dispatch({

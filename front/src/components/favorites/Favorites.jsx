@@ -11,7 +11,7 @@ const Favorites = ({myFavorites}) => {
 
     const handleChange = (event)=>{
 
-        console.log(event.target);
+        //console.log(event.target);
         if(event.target.name === 'filter'){
             dispatch(filterCards(event.target.value));  
         }

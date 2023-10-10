@@ -1,24 +1,52 @@
 const axios = require("axios");
+const URL = `https://rickandmortyapi.com/api/character/`;
 
-function getCharById(req, res) {
+const getCharById = async (req, res) => {
 
     const id = req.params.id;
-    const url = `https://rickandmortyapi.com/api/character/${id}`;
 
-    axios.get(url)
-        .then((axiosResponse) => {
-            const {id, name, image} = axiosResponse.data;
-            //console.log('controllers',axiosResponse.data)
-            res
-                .status(200)
-                .json(axiosResponse.data);
+    try {
+        const data = (await axios(`${URL}/${id}`)).data;
+        const character = {
+            id,
+            name: data.name,
+            origin: data.origin,
+            status: data.status,
+            gender: data.gender,
+            species: data.species,
+            location: data.location,
+            image: data.image
+        }
+        return res.status(200).json(character);
+    } catch (error) {
+        throw Error(error.message);
+    }
 
-        })
-        .catch((error) => {
-            res
-                .writeHead(500, { "Content-type": "text/plain" })
-                .end(error.message)
-        })
+
+    // axios.get(`${URL}/${id}`)
+    //     .then(({ data }) => {
+    //         //console.log('controllers',axiosResponse.data)
+    //         if (data.id) {
+    //             const character = {
+    //                 id,
+    //                 name: data.name,
+    //                 origin: data.origin,
+    //                 status: data.status,
+    //                 gender: data.gender,
+    //                 species: data.species,
+    //                 location: data.location,
+    //                 image: data.image
+    //             }
+    //             return res.status(200).json(character);
+    //         }
+
+    //         return res.status(404).send('Not Found')
+
+
+    //     })
+    //     .catch((error) => {
+    //         return res.status(500).send(error.message)
+    //     })
 }
 module.exports = getCharById;
 

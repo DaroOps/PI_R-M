@@ -66,7 +66,7 @@ function App() {
       if (data.name) {
         //console.log(data)
         //console.log(data)
-        if (!characters.find(char => char.id === parseInt(id))) {
+        if (!characters.find(char => char.id ==id)) {
           //window.alert('¡El ID solicitado ya se encuentra en la lista!');
           setCharacters((oldChars) => [...oldChars, data]);
         }
