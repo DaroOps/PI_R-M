@@ -15,19 +15,13 @@ import { useSelector } from 'react-redux/es/hooks/useSelector';
 /* Dependencias */
 import axios from "axios";
 
-
 function App() {
-
-
   const [characters, setCharacters] = useState([]);
 
   const myFavorites = useSelector((state) => state.myFavorites);
 
-  //#region  simulacion Base de Datos
   const navigate = useNavigate();
   const [access, setAccess] = useState(false);
-  // const EMAIL = 'eje@cosa.com';
-  // const PASSWORD = '12345678a';
 
   const login = async (userData) => {
     const { email, password } = userData;
@@ -38,7 +32,7 @@ function App() {
       const { access } = data;
 
       setAccess(data);
-      //console.log(data);
+      
       access && navigate('/home');
     } catch (error) {
       throw Error(error.message);
@@ -49,15 +43,11 @@ function App() {
 
     if (!access) {
       navigate('/login');
-
     }
     else {
       navigate('/home');
     }
-    // !access&&navigate('/');
-
   }, []);
-  //#endRegion final simulacion de base de datos
 
   const onSearch = async (id) => {
 
@@ -74,23 +64,15 @@ function App() {
         if (!characters.find(char => char.id ==id)) {
           setCharacters((oldChars) => [...oldChars, data]);
         }
-        //window.alert('¡El ID solicitado ya se encuentra en la lista!');
       }
     } catch (error) {
       throw Error(error.message);
     }
-   
-    
   }
-
-  //console.log(characters);
 
   const onClose = (id) => {
 
     const filterCharacters = characters.filter((character) => character.id != parseInt(id));
-    console.log('Called Close event')
-    console.log(id)
-    console.log(filterCharacters)
     setCharacters(filterCharacters);
   }
 

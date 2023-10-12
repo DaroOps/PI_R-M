@@ -1,82 +1,86 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import validations from '../../functions/form/validation'
+import logo from '../../assets/rickmortylogo.png';
 
-const Form = ({onLogin}) => {
+import './Form.modules.css';
 
-  
+const Form = ({ onLogin }) => {
 
     const [errors, setErrors] = useState({});
-
     const [userData, setUserData] = useState({
-
         email: '',
         password: ''
-
     });
 
-    
-
     const handleChange = (event) => {
-        
-
-        //console.log(userData);
-        //console.log(event.target.name);
-      
         setUserData({
             ...userData,
             [event.target.name]: event.target.value
         });
     }
 
-    useEffect (()=>
-    {
+    useEffect(() => {
         setErrors(validations(userData));
-     
     }, [userData])
-    
+
     const onSubmit = (event) => {
-        
         event.preventDefault();
         onLogin(userData);
         setUserData({
-         email: userData.email,
-         password: userData.password
+            email: userData.email,
+            password: userData.password
         })
     }
 
     return (
-        
+
+
+
         <form onSubmit={onSubmit} className="form">
-            <label htmlFor="email">E-mail: </label>
-            <input
-                type="email"
-                name="email"
-                value={userData.email}
+           
+           
+    
+            <div className="login-container">
+            <div className="login-background">
+            <div className="dot"></div>
+            <div className="login-card">
+                <label htmlFor="email">E-mail: </label>
+                <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    value={userData.email}
 
-                onChange={handleChange}
-                
-            />
+                    onChange={handleChange}
+                />
+                {errors.email !== '' && <p style={{ color: 'red' }}>{errors?.email}</p>}
 
-            {errors.email !== '' && <p style={{ color: 'red' }}>{errors?.email}</p>}
+                <label htmlFor="password">Password: </label>
+                <input
+                    id="password"
+                    type="password"
+                    name="password"
+                    value={userData.password}
 
-            <label htmlFor="password">Password: </label>
-            <input
-                type="password"
-                name="password"
-                value={userData.password}
+                    onChange={handleChange}
+                />
 
-                onChange={handleChange}
-            />
+                {errors.password !== '' && <p style={{ color: 'red' }}>{errors?.password}</p>}
 
-            {errors.password !== '' &&<p style={{ color: 'red' }}>{errors?.password}</p>}
-
-            <button
-                type="onsumbit"
-                disabled={errors?.email || errors?.password}>
-                Sumbit
-            </button>
-
+                <button
+                    type="Sumbit"
+                    disabled={errors?.email || errors?.password}>
+                    Log In
+                </button>
+            </div>
+            </div>
+            <div className="logo-container">
+                <img className="logo-image" src={logo} alt="Rick&Morty"/>
+            </div>
+            </div>
         </form>
+
+
     );
 
 }
