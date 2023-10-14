@@ -9,10 +9,26 @@
     align-items: baseline;
     align-content: stretch;
     background-color: #000000;
+    position: fixed;
+    z-index: 3;
+    width: 100%;
   }
+  .logo-container{
 
+      padding-left: 3%;
+      justify-content: center;
+	    align-items: center;
+  }
   .logo {
-    padding-left: 3%;
+    position:fixed;
+    top: 1.5%;
+    content: "";
+    
+    background-image: url('../../assets/Rick-and-Morty.svg');
+    width: 40px;
+    height: 40px;
+    
+    background-repeat: no-repeat;
   }
 
   .logoutButton {

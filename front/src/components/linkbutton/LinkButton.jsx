@@ -1,13 +1,18 @@
 import { Link } from "react-router-dom"
 
+import './LinkButton.modules.css';
+
 const LinkButton = ({ link, text }) => {
 
-    const nameOfClass = text.toLowerCase()+'Button';
-    return(
+    const nameOfClass = text.toLowerCase() + 'Button';
+    return (
         <div className={nameOfClass}>
-            <Link to={link} >
-                <button >{text}</button>
-            </Link>
+            <div className="link-button">
+                <Link to={link} >
+                    <span className='link-text'>{text}</span>
+                </Link>
+              
+            </div>
         </div>
     );
 

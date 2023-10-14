@@ -20,8 +20,9 @@ const Nav = ({ onSearch }) => {
 
     return (
         <div className="nav" >
-
-            <div className="logo"><h3>LOGO</h3></div>
+            <div className="logo-container">
+                <div className="logo"></div>
+            </div>
 
             <div className="navRouteIndex">
                 

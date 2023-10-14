@@ -1,8 +1,9 @@
-import { ADD_FAV, FILTER, ORDER, REMOVE_FAV } from "../actions/types";
+import {  ADD_FAV, FILTER, ORDER, REMOVE_FAV } from "../actions/types";
 
 const initialState = {
     allCharacters: [],
     myFavorites: [],
+    activeLink: 0
 };
 
 const reducer = (state = initialState, action) => {
@@ -39,6 +40,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 myFavorites: favoritesOrdered
             }
+        
 
         default:
             return { ...state }

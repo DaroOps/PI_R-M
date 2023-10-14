@@ -7,22 +7,42 @@
     color: #000;
     font-weight: bold;
 }
-.login-conatiner{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.background{
+    
+
+    min-height: 100%;
+    min-width: 1024px;
+	
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+	
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
 }
-.logo-container {
+.form{
+    display: flex;
+   
+    flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-evenly;
+	
+}
+.logo-container { 
     display: flex;
     justify-content: center;
     align-items: center;
   }
 .logo-image{
-    width: 50%;
-    margin-left: 5%;
-    align-self: center;
+
+    
     z-index:1;
+    width: 600px;
+    height: auto;
 }
+   
 
 .dot{
     will-change: transform;
@@ -30,10 +50,8 @@
     overflow: hidden;
     background-color:rgb(255, 255, 255);
     position: absolute;
-    left:99% ;
-    /* 99% */
+    left:99%;
     top: 275px;
-    /* 275px */
     width: 10px;
     height: 10px;
     border-radius: 999px;

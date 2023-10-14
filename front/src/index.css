@@ -5,17 +5,19 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #303054;
-
+  
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   z-index: 2;
- 
-
+  
 }
 
 body {
+  
+  
   margin: 0;
+  
+  
 }
 
 

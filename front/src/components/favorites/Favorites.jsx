@@ -3,44 +3,49 @@ import { orderCards, filterCards } from "../../redux/actions/actions";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 
+import './Favorites.modules.css';
 
-const Favorites = ({myFavorites}) => {
+
+const Favorites = ({ myFavorites }) => {
     const dispatch = useDispatch();
 
     const [aux, setAux] = useState(false);
 
-    const handleChange = (event)=>{
+    const handleChange = (event) => {
 
         //console.log(event.target);
-        if(event.target.name === 'filter'){
-            dispatch(filterCards(event.target.value));  
+        if (event.target.name === 'filter') {
+            dispatch(filterCards(event.target.value));
         }
-        else{
+        else {
             setAux(!aux);
             dispatch(orderCards(event.target.value));
             // console.log(event.target);
         }
-        
+
     }
-    
+
 
     return (
-       <div>
-            <select name="order" onChange={handleChange}>
-                <option value="A">Acendente</option>
-                <option value="D">Decendente</option>
-            </select>
+        <div>
+            <div className="select">
+                <select name="order" onChange={handleChange}>
+                    <option value="A">Acendente</option>
+                    <option value="D">Decendente</option>
+                </select>
 
-            <select name="filter" onChange={handleChange}>
-                <option value="All">All Characters</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Genderless">Genderless</option>
-                <option value="unknow">Unknow</option>
+                <select name="filter" onChange={handleChange}>
+                    <option value="All">All Characters</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Genderless">Genderless</option>
+                    <option value="unknow">Unknow</option>
 
-            </select>
+                </select>
+            </div>
 
-            <Cards characters={myFavorites}/>
+
+            <Cards characters={myFavorites} />
         </div>
 
     );
