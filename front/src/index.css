@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200,900');
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -9,6 +11,19 @@
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   z-index: 2;
+
+  --text-color: hsla(210, 50%, 85%, 1);
+  --shadow-color: hsla(210, 40%, 52%, .4);
+  --btn-color: rgb(68, 138, 50);
+  --nav-bg-color: #141218;
+
+  --btn-glow: rgb(229, 236, 45);
+
+  --btn-search-bg: #04043a;
+  --btn-search-bg-glow: #14ac0f;
+
+  --btn-logout-color: #970303;
+
   
 }
 

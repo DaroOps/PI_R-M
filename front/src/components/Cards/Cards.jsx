@@ -6,7 +6,7 @@ const Cards = ({ characters, onClose }) => {
 
    return (
       <div className='cards'>
-        <div className='tt'>a</div>
+        <div className='tt'></div>
          
          <div className='stars-container'>
             <div className="space stars1"></div>

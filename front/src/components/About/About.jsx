@@ -1,6 +1,8 @@
+import './About.modules.css';
+
 const About = ()=>{
     return(
-       <div className="About">
+       <div className="about">
 
             <h2>ABOUT SECTOR</h2>
 

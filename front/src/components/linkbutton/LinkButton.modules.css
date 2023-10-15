@@ -1,67 +1,117 @@
-.link-text {
+
+
+.link{
   text-decoration: none;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-weight: bold;
+  
+}
+.link-button{
+  
+  background: none;
+  background-color: var(--btn-color);
+  cursor: pointer;
+  overflow: hidden;
+  
+  font-family: "Source Code Pro";
+  font-weight: 900;
   padding: 10px 10px;
+  
+  font-size: 20px;
 
   position: relative;
-  width: 33.333%;
+  width: 100%;
   display: table-cell;
   text-align: center;
-  color: #ffffff;
-  transition: 0.2s ease color;
+  color: var(--text-color);
+  border-radius: 10%;
+  z-index: 10;
+  
 }
 
-.link-text:before,
-.link-text:after {
-  content: "";
+
+.link-button:focus{
+  
+  outline-color: transparent;
+  box-shadow:  2px 2px 22px;
+  box-shadow:0px 0px 4px 5px var(--btn-color);
+}
+
+.fill::after, .link-button::after {
+ 
+  content: var(--content);
+  display: block;
   position: absolute;
-  border-radius: 50%;
-  transform: scale(0);
-  transition: 0.2s ease transform;
+  white-space: nowrap;
+  padding: 40px 40px;
+  pointer-events:none;
 }
 
-.link-text:before {
+.link-button::after{
+  font-weight: 100;
+  top: -30px;
+  left: -30px;
+} 
+
+.fill {
+ 
+  position: absolute;
+  width: 100%;
+  height: 100%;
   top: 0;
-  left: 10px;
-  width: 6px;
-  height: 6px;
 }
 
-.link-text:after {
-  top: 5px;
-  left: 18px;
-  width: 4px;
-  height: 4px;
+.fill {
+  
+  left: 0;
+ 
 }
 
-.link-text:nth-child(1):before {
-  background-color: rgb(0, 255, 34);
+.fill::after {
+
+  top: -30px;
+  left: 0;
+  
+  background-color: var( --nav-bg-color);
+  color:transparent;
+  transition: transform .4s ease-out;
+ 
 }
 
-.link-text:nth-child(1):after {
-  background-color: rgb(4, 167, 85);
+.link-button .fill:hover::after {
+  
+  transform: translate(0, -90%) 
 }
 
-.link-button .link-text:hover {
-  color: #00ff55;
+.link-button .fill:after {
+
+ 
+  transform: translate(0, 0%) 
+}
+/* bubbles */
+.link-button::before {
+  content: '';
+  pointer-events: none;
+  opacity: .6;
+  background:
+   radial-gradient(circle at 20% 15%, transparent 0, transparent 2px, var(--text-color) 3px, var(--text-color) 4px, transparent 4px),
+    radial-gradient(circle at 50% 35%, transparent 0, transparent 2px, var(--text-color) 3px, var(--text-color) 4px, transparent 4px),
+    radial-gradient(circle at 80% 55%, transparent 0, transparent 2px, var(--text-color) 3px, var(--text-color) 4px, transparent 4px),
+    radial-gradient(circle at 30% 50%, transparent 0, transparent 4px, var(--text-color) 5px, var(--text-color) 6px, transparent 6px),
+    radial-gradient(circle at 70% 10%, transparent 0, transparent 4px, var(--text-color) 5px, var(--text-color) 6px, transparent 6px);
+
+  width: 100%;
+  height: 300%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  animation: bubbles 4s linear infinite both;
+ 
 }
 
-.link-button .link-text:hover:before,
-.link-button .link-text:hover:after {
-  transform: scale(2);
-}
-
-.link-button .link-text:nth-child(1):hover~#indicator {
-  background: linear-gradient(130deg,#00e2ff, #89ff00);
-}
-
-.link-button .link-text:nth-child(2):hover~#indicator {
-  left: 34%;
-  background: linear-gradient(130deg, );
-}
-
-.link-button .link-text:nth-child(3):hover~#indicator {
-  left: 70%;
-  background: linear-gradient(130deg, purple, palevioletred);
+@keyframes bubbles {
+  from {
+    transform: translate(0);
+  }
+  to {
+    transform: translate(0, -66.666%);
+  }
 }

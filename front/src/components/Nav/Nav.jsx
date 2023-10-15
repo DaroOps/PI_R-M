@@ -15,7 +15,11 @@ const Nav = ({ onSearch }) => {
     const performLogout = () => {
         localStorage.clear();
         console.log("LOGOUT CLICK " + localStorage.getItem('access'));
-        navigate('/');
+        navigate('/login');
+    }
+
+    const style={
+        "--content": "'Log Out'"
     }
 
     return (
@@ -38,13 +42,18 @@ const Nav = ({ onSearch }) => {
                 <div className="searchBar">
                     <SearchBar onSearch={onSearch} />
                 </div>
-                <div className="randomButton">
-                    <button onClick={generateRandomId}>?</button>
+                <div className="rand-button-container">
+                   
+                        <button className="random-button" onClick={generateRandomId}>?</button>
+        
                 </div>
             </div>
 
-            <div className="logoutButton">
-                <button onClick={performLogout}>Log Out</button>
+            <div className="logout-container">
+                <button style={style} className="logout-button" onClick={performLogout}>
+                <div className="fill"></div>
+                    Log Out
+                </button>
             </div>
 
         </div>

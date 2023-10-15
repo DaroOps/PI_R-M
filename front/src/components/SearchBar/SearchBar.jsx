@@ -1,22 +1,21 @@
 import { useState } from "react";
 import './SearchBar.modules.css';
 
-const SearchBar = ({onSearch}) => {
+const SearchBar = ({ onSearch }) => {
 
    const [id, setID] = useState('');
 
-   const handleChange = (event) =>
-   {
+   const handleChange = (event) => {
       setID(event.target.value)
-   }   
+   }
 
    return (
-      <div className="searchComponent">
-         <div className="inputDiv">
-            <input type='search' value={id} onChange={handleChange}/>
-         </div>
-         <div className="searchButton">
-            <button onClick={()=>onSearch(id)}>Search</button> 
+      <div className="search-component">
+         <div className="search-bar">
+            <input type='search' value={id} onChange={handleChange} pattern=".*\S.*" required />
+            <button className="search-btn" onClick={() => onSearch(id)}>
+               <span>Search</span>
+            </button>
          </div>
       </div>
    );
