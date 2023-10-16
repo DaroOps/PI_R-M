@@ -29,22 +29,28 @@ const Favorites = ({ myFavorites }) => {
     return (
         <div>
             <div className="select">
-                <select name="order" onChange={handleChange}>
-                    <option value="A">Acendente</option>
-                    <option value="D">Decendente</option>
-                </select>
+                <div className="op-1">
+                    <select name="order" onChange={handleChange}>
+                        <option value="A">Acendente</option>
+                        <option value="D">Decendente</option>
+                    </select>
 
-                <select name="filter" onChange={handleChange}>
-                    <option value="All">All Characters</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Genderless">Genderless</option>
-                    <option value="unknow">Unknow</option>
+                </div>
+                <div className="op-2">
+                    <select name="filter" onChange={handleChange}>
+                        <option value="All">All Characters</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Genderless">Genderless</option>
+                        <option value="unknown">Unknown</option>
 
-                </select>
+                    </select>
+
+                </div>
+
             </div>
 
-
+            <div className="spacer"></div>
             <Cards characters={myFavorites} />
         </div>
 

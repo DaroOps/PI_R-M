@@ -71,7 +71,7 @@ const Card = ({ id, name, image, onClose, gender }) => {
 
                         {
                            isFav ? (
-                              <button className="favButton" onClick={handleFavorite}>❤️</button>
+                              <button className="favButtonFill" onClick={handleFavorite}>❤️</button>
                            ) : (
                               <button className="favButton" onClick={handleFavorite}>🤍</button>
                            )

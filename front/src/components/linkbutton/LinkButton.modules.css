@@ -13,10 +13,11 @@
   
   font-family: "Source Code Pro";
   font-weight: 900;
-  padding: 10px 10px;
+  padding: 10px ;
   
-  font-size: 20px;
-
+  
+  font-size: var(--btn-bub-fill-font-size);
+  
   position: relative;
   width: 100%;
   display: table-cell;

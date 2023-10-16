@@ -1,8 +1,75 @@
+:root{
+  --arrow-icon: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg);
+  --arrow-bg: #04043a;
+  --arrow-bg-glow: #0707af;
+  --option-bg: rgb(19, 12, 37);
+  --select-bg: rgb(2, 85, 105);
+  --select-bg-glow: rgb(0, 147, 184);
+
+}
+
+
 .select{
+
+  display: flex;
   position: fixed;
-  top: 0;
+  top: 13%;
+  
   width: 100%;
-  background-color: black;
+  
   z-index: 3;
-  margin-top: 4%;
+}
+
+.spacer{
+  height: 65px;
+}
+.op-1{
+  margin-left: 3%;
+  margin-right: 3%;
+}
+.op-2{
+  margin-right: 3%;
+}
+
+select {
+  /* Reset */
+  appearance: none;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  font-weight: bolder;
+  /* Personalize */
+  padding-left:5%;
+ 
+  padding: 0.35rem 4rem 0.35rem 1rem;
+  background: var(--arrow-icon) no-repeat right 0.8em center / 1.4em,
+    linear-gradient(to left, var(--arrow-bg) 3em, var(--select-bg) 3em);
+  color: white;
+  border-radius: 0.25em;
+  box-shadow: 0 0.1em 1em 0 rgb(0, 0, 0);
+  cursor: pointer;
+  /* Remove IE arrow */
+  &::-ms-expand {
+    display: none;
+  }
+  /* Remove focus outline */
+  &:focus{
+    outline: none;
+  }
+  &:hover
+  {
+    box-shadow: 0 0.1em 1em 0 rgb(0, 204, 255);
+    
+    background: var(--arrow-icon) no-repeat right 0.8em center / 1.4em,
+    linear-gradient(to left, var(--arrow-bg-glow) 3em, var(--select-bg-glow) 3em);
+    -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition:background-color box-shadow 0.3s ease-in;
+  }
+
+  /* <option> colors */
+  option {
+    color: inherit;
+    font-weight:initial;
+    background-color: var(--option-bg);
+  }
 }

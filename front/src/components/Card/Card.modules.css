@@ -201,13 +201,15 @@
 
 	border-radius: 50%;
 
+	min-width: 50px;
+	min-height: 54px ;
 
 
 	padding: 0;
 	font: inherit;
 	cursor: pointer;
 
-	font-size: xx-large;
+	font-size:x-large;
 
 	border: 3px solid transparent;
 	background:
@@ -218,6 +220,45 @@
 	backface-visibility: hidden;
 
 
+}
+.favButtonFill {
+	position: relative;
+	top: 5px;
+
+	border-radius: 50%;
+
+	min-width: 50px;
+	min-height: 54px ;
+
+
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+
+	font-size:xx-large;
+
+	border: 3px solid transparent;
+	background:
+		linear-gradient(#04043a, #04043a) padding-box,
+		linear-gradient(133deg, transparent 50%, #ffffff 50%) border-box;
+		
+	transform-style: preserve-3d;
+	backface-visibility: hidden;
+
+
+}
+.favButton:hover{
+	font-size: xx-large;
+	-webkit-transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition:font-size 0.1s ease-in;
+}
+.favButtonFill:hover{
+	
+	font-size: xx-large;
+	animation: beat .50s infinite alternate;
+}
+@keyframes beat{
+	from{ font-size: x-large ; }
 }
 
 .favoriteButton {

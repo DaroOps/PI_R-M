@@ -51,10 +51,6 @@ function App() {
 
   const onSearch = async (id) => {
 
-    if (Number(id) > 826 || Number(id) < 1) {
-      return window.alert('¡No hay personajes con este ID!');
-    }
-
     try {
       
       const {data} = await axios(`http://localhost:3001/rickandmorty/character/${id}`) 
@@ -63,9 +59,13 @@ function App() {
        
         if (!characters.find(char => char.id ==id)) {
           setCharacters((oldChars) => [...oldChars, data]);
+          //change the color of shadow box in nav bar
+          document.documentElement.style.setProperty('--nav-shadow-status','#00eeff');
         }
       }
     } catch (error) {
+      //change the color shadow box in nav bar
+      document.documentElement.style.setProperty('--nav-shadow-status','#ff0000');
       throw Error(error.message);
     }
   }
