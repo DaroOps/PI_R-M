@@ -1,4 +1,8 @@
-.about{
-    margin-top: 10%;
-
+.about-spacer{
+    height: 50px;
+}
+.hide-heatmap-content{
+    border: 3px solid #DDDDDD;
+    border-radius: 10px;
+    width: 16%;
 }
