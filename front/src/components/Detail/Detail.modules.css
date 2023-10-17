@@ -1,0 +1,41 @@
+.detail-background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+}
+.flex-info{
+    
+    background-color: rgba(13, 10, 24, 0.932);
+    position: relative;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    align-content: stretch;
+    width: 60%;
+    height: 80vh;
+    border-radius: 10px;
+    margin-top: 2%;
+    margin-left: 20%;
+    
+    
+}
+.detail-card{
+    position: absolute;
+    left: 4%;
+
+}
+
+.aditional-info{
+    position: absolute;
+    left: 0px;
+    opacity: 0;
+}
+
+.aditional-info.infoCharged {
+    position: relative;
+    left: 190px;
+    opacity: 1;
+    transition: left 0.5s ease-in-out,  opacity 0.5s ease-in-out;
+}

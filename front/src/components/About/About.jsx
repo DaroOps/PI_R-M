@@ -9,9 +9,11 @@ const About = () => {
             <div className="about-spacer" />
             <div className='about-adjust-size'>
                 <div className='about-bgcard'>
-                    <div className='header-text'> <h2>David Romero - (DaroOPs)</h2></div>
+                    <div className='header-text'> <h2>David Romero - (DaroOps)</h2></div>
                     <div className='head-card'>
-                        <div className='dev-icon'></div>
+                        <div className='dev-icon'>
+                            <img className='profile-icon' src="https://github.com/DaroOps.png" alt="avatar" />
+                        </div>
                         <div className='hide-heatmap-content'>
                             <Heatmap className='heatmap' />
                         </div>
