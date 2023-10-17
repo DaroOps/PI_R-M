@@ -17,7 +17,7 @@ const Card = ({ id, name, image, onClose, gender }) => {
       const isCharacterFav = myFavorites.some((fav) => fav.id == id);
       setIsFav(isCharacterFav);
 
-   }, [myFavorites,isCharged]);
+   }, [],[isCharged],[myFavorites]);
 
  
    const dispatch = useDispatch();

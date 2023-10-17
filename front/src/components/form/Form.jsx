@@ -68,7 +68,7 @@ const Form = ({ onLogin }) => {
                         onChange={handleChange}
                     />
 
-                    {errors.password !== '' && <p style={{ color: 'red' }}>{errors?.password}</p>}
+                    {errors.password !== <p style={{ color: 'red' }}>{errors?.password}</p> && <p style={{ color: 'red' }}>{errors?.password}</p>}
 
                     <button
                         type="Sumbit"

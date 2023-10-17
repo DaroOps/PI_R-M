@@ -31,11 +31,17 @@
     position: absolute;
     left: 0px;
     opacity: 0;
+   
+    
+    
 }
 
 .aditional-info.infoCharged {
     position: relative;
-    left: 190px;
+    left: 230px;
+    width: 50%;
+    overflow-wrap: break-word;
     opacity: 1;
     transition: left 0.5s ease-in-out,  opacity 0.5s ease-in-out;
+   
 }
