@@ -8,11 +8,7 @@ const Cards = ({ characters, onClose }) => {
       <div className='cards'>
         <div className='tt'></div>
          
-         <div className='stars-container'>
-            <div className="space stars1"></div>
-            <div className="space stars2"></div>
-            <div className="space stars3"></div>
-         </div>
+        
          <div className='cards-table'>
          {
             characters.map((character) => {
