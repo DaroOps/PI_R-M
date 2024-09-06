@@ -1,11 +1,11 @@
 /* Componentes a renderizar */
-import Nav from './components/nav/Nav';
-import Form from './components/form/Form';
-import Cards from './components/cards/Cards';
-import About from './components/about/About';
-import Detail from './components/detail/Detail';
+import Nav from './components/Nav/Nav.jsx';
+import Form from './components/form/Form.jsx';
+import Cards from './components/Cards/Cards.jsx';
+import About from './components/About/About';
+import Detail from './components/Detail/Detail';
 import Favorites from './components/favorites/Favorites';
-import Error from './components/error/Error'
+import Error from './components/Error/Error'
 
 /* Hooks */
 import { useState, useEffect } from 'react';
@@ -21,7 +21,7 @@ function App() {
   const myFavorites = useSelector((state) => state.myFavorites);
 
   const navigate = useNavigate();
-  const [access, setAccess] = useState(false);
+  const [access, setAccess] = useState(true);
 
   const login = async (userData) => {
     const { email, password } = userData;

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import './Detail.modules.css'
-import Card from "../card/Card";
+import Card from "../Card/Card.jsx";
 import axios from "axios";
 
 

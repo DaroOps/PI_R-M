@@ -1,5 +1,5 @@
-import LinkButton from "../linkbutton/LinkButton";
-import SearchBar from "../searchbar/SearchBar";
+import LinkButton from "../linkbutton/LinkButton.jsx";
+import SearchBar from "../SearchBar/SearchBar.jsx";
 import { useNavigate } from "react-router-dom";
 import './Nav.modules.css';
 
